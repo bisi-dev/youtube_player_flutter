@@ -130,6 +130,8 @@ class YoutubePlayer extends StatefulWidget {
   /// {@endtemplate}
   final bool showVideoProgressIndicator;
 
+  final Widget? zoomWidget;
+
   /// Creates [YoutubePlayer] widget.
   const YoutubePlayer({
     this.key,
@@ -148,6 +150,7 @@ class YoutubePlayer extends StatefulWidget {
     this.actionsPadding = const EdgeInsets.all(8.0),
     this.thumbnail,
     this.showVideoProgressIndicator = false,
+    this.zoomWidget,
   })  : progressColors = progressColors ?? const ProgressBarColors(),
         progressIndicatorColor = progressIndicatorColor ?? Colors.red;
 
@@ -403,6 +406,10 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
               ),
             ),
           ],
+          if(widget.zoomWidget != null)
+            Center(
+              child: widget.zoomWidget,
+            ),
           if (!controller.flags.hideControls)
             Center(
               child: PlayPauseButton(),
